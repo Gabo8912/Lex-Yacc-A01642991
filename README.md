@@ -61,33 +61,29 @@ Las reglas se evalúan en orden; una accion solo se aplica cuando su condicion e
 Construye una imagen local (Flex y Bison se instalan solo en la etapa de construccion):
 
 ```sh
-docker build -t interprete-iot .
-docker run --rm interprete-iot
+docker build -t gavo8912/interprete-iot:1.0 .
+docker run --rm gavo8912/interprete-iot:1.0
 ```
 
 Para interpretar un archivo propio, montalo en el contenedor:
 
 ```sh
-docker run --rm -v "$(pwd)/mi_programa.iot:/app/entrada.iot:ro" interprete-iot /app/entrada.iot
+docker run --rm -v "$(pwd)/mi_programa.iot:/app/entrada.iot:ro" gavo8912/interprete-iot:1.0 /app/entrada.iot
 ```
 
 ## Publicacion
 
-Para publicar la imagen, autentica Docker con una cuenta de Docker Hub y etiqueta la imagen con tu usuario:
+La imagen se publica en Docker Hub como `gavo8912/interprete-iot:1.0`:
 
 ```sh
 docker login
-docker tag interprete-iot TU_USUARIO/interprete-iot:1.0
-docker push TU_USUARIO/interprete-iot:1.0
+docker push gavo8912/interprete-iot:1.0
 ```
 
-Para entregar el codigo en un repositorio privado, crea un repositorio privado en GitHub y configura su URL como remoto antes de subir la rama principal:
+El codigo fuente se entrega en el repositorio privado [Gabo8912/Lex-Yacc-A01642991](https://github.com/Gabo8912/Lex-Yacc-A01642991). Para subir cambios nuevos desde este repositorio:
 
 ```sh
-git init
 git add .
 git commit -m "Implementa interprete IoT con Lex y Yacc"
-git branch -M main
-git remote add origin URL_DEL_REPOSITORIO_PRIVADO
 git push -u origin main
 ```

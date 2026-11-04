@@ -17,7 +17,7 @@ $(BUILD_DIR)/lexer.c: lexer.l $(BUILD_DIR)/parser.h | $(BUILD_DIR)
 	flex -o $@ lexer.l
 
 $(TARGET): main.c runtime.c runtime.h $(BUILD_DIR)/parser.c $(BUILD_DIR)/lexer.c
-	$(CC) $(CFLAGS) -o $@ main.c runtime.c $(BUILD_DIR)/parser.c $(BUILD_DIR)/lexer.c -lfl
+	$(CC) $(CFLAGS) -o $@ main.c runtime.c $(BUILD_DIR)/parser.c $(BUILD_DIR)/lexer.c
 
 test: $(TARGET)
 	sh tests/smoke.sh
