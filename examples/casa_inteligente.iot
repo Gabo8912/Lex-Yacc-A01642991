@@ -1,0 +1,13 @@
+# Sensores: temperatura (grados), humedad (porcentaje) y humo (0 o 1).
+sensor temperatura = 31;
+sensor humedad = 45;
+sensor humo = 0;
+
+regla confort {
+    si temperatura > 28 AND humedad < 60 entonces ventilador = encendido;
+    si temperatura < 18 entonces calefaccion = encendido;
+}
+
+regla seguridad {
+    si humo == 1 OR temperatura >= 45 entonces alarma = encendido;
+}
